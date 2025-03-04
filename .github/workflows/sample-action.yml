@@ -11,6 +11,9 @@ jobs:
       matrix:
         node: [14, 16]
         os: [ubuntu, windows]
+        exclude:
+          - node: 14
+            os: ubuntu-latest
     steps:
       - uses: actions/setup-node@v4
         with:
