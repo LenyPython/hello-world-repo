@@ -13,7 +13,7 @@ jobs:
         os: [ubuntu, windows]
         exclude:
           - node: 14
-            os: ubuntu-latest
+            os: ubuntu
     steps:
       - uses: actions/setup-node@v4
         with:
