@@ -5,11 +5,17 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 
 jobs:
-  example-job:
+  setup:
     runs-on: ubuntu-latest
     steps:
-      - name: Retrieve secret
-        env:
-          super_secret: ${{ secrets.SUPERSECRET }}
-        run: |
-          echo "$super_secret"
+      - run: echo "step 1"
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "step build"
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "step test"
