@@ -5,17 +5,12 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "step 1"
   build:
-    needs: setup
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [14, 16]
     steps:
-      - run: echo "step build"
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "step test"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
