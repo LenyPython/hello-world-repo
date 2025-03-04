@@ -10,7 +10,10 @@ jobs:
     strategy:
       matrix:
         node: [14, 16]
+        os: [ubuntu, windows]
     steps:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
+      - run: |
+          echo ${{ matrix.os }}
